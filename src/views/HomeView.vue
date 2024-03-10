@@ -157,18 +157,7 @@ console.log(getLocation, 'getLocationgetLocationgetLocation')
           <div class="td">{{ delivery.customer.name }}</div>
           <div class="td">{{ delivery.location }}</div>
           <div class="td">{{ delivery.order_date }}</div>
-          <div
-            class="td status"
-            :class="[
-              {
-                //   delivered: delivery.status === 'Delivered',
-                //   pending: delivery.status === 'Pending',
-                //   shipped: delivery.status === 'Shipped',
-                //   cancelled: delivery.status === 'Cancelled'
-              },
-              delivery.status.toLowerCase()
-            ]"
-          >
+          <div class="td status" :class="[delivery.status.toLowerCase()]">
             {{ delivery.status }}
           </div>
           <div class="td">
