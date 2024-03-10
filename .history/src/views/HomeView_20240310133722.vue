@@ -115,11 +115,9 @@ let deliveries = ref([
 ])
 
 let getLocation = ref([])
-
 const getStatus = computed(() => {
   return deliveries.value.map((item) => item.status)
 })
-
 getLocation = computed(() => {
   return deliveries.value.map((item) => item.location)
 })
@@ -159,15 +157,12 @@ console.log(getLocation, 'getLocationgetLocationgetLocation')
           <div class="td">{{ delivery.order_date }}</div>
           <div
             class="td status"
-            :class="[
-              {
-                //   delivered: delivery.status === 'Delivered',
-                //   pending: delivery.status === 'Pending',
-                //   shipped: delivery.status === 'Shipped',
-                //   cancelled: delivery.status === 'Cancelled'
-              },
-              delivery.status.toLowerCase()
-            ]"
+            :class="{
+              delivered: delivery.status === 'Delivered',
+              pending: delivery.status === 'Pending',
+              shipped: delivery.status === 'Shipped',
+              cancelled: delivery.status === 'Cancelled'
+            }"
           >
             {{ delivery.status }}
           </div>

@@ -36,14 +36,9 @@ body {
   overflow: hidden;
   padding: 20px 10px;
   max-width: 900px;
-}
-
-.table-row-action {
-  margin: 0 0 10px;
 
   .input-holder {
     max-width: 250px;
-    margin: 0 0 0 auto;
 
     input {
       width: 100%;
@@ -51,8 +46,7 @@ body {
       border: none;
       border-radius: 8px;
       padding: 5px 10px;
-      line-height: 41px;
-      outline: none;
+      line-height: 40px;
     }
   }
 }

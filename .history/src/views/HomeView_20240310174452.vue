@@ -119,7 +119,7 @@ let getLocation = ref([])
 const getStatus = computed(() => {
   return deliveries.value.map((item) => item.status)
 })
-
+console.log(getStatus, 'getStatus')
 getLocation = computed(() => {
   return deliveries.value.map((item) => item.location)
 })

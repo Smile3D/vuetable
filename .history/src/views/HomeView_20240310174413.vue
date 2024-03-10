@@ -119,7 +119,7 @@ let getLocation = ref([])
 const getStatus = computed(() => {
   return deliveries.value.map((item) => item.status)
 })
-
+console.log(getStatus, 'getStatus')
 getLocation = computed(() => {
   return deliveries.value.map((item) => item.location)
 })
@@ -165,8 +165,7 @@ console.log(getLocation, 'getLocationgetLocationgetLocation')
                 //   pending: delivery.status === 'Pending',
                 //   shipped: delivery.status === 'Shipped',
                 //   cancelled: delivery.status === 'Cancelled'
-              },
-              delivery.status.toLowerCase()
+              }
             ]"
           >
             {{ delivery.status }}
