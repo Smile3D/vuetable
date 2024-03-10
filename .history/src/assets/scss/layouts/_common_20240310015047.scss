@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+#app {
+  width: 100%;
+  max-width: 900px;
+}
+
+body {
+  background-image: url(../images/zvezdnoe_nebo.jpeg);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 1170px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.table-wrapper {
+  border-radius: 8px;
+  background-color: #fff5;
+  backdrop-filter: blur(7px);
+  box-shadow: 0 4px 8px #0005;
+  overflow: hidden;
+  padding: 20px 10px;
+  max-width: 900px;
+}
+
+.table {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.thead {
+  background-color: rgba(213, 209, 222, 0.7);
+  font-weight: 700;
+}
+
+.thead,
+.tbody {
+  .tr {
+    display: grid;
+    grid-template-columns: 60px repeat(4, 1fr) 100px;
+    align-items: center;
+    padding: 12px 15px;
+  }
+}
+
+.tbody {
+  .tr {
+    &:nth-child(even) {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  .status {
+    max-width: 120px;
+    padding: 5px;
+    border-radius: 24px;
+    text-align: center;
+
+    &.delivered {
+      color: #006b21;
+      background-color: #86e49d;
+    }
+
+    &.cancelled {
+      color: #b30021;
+      background-color: #d893a3;
+    }
+
+    &.pending {
+      background-color: #ebc473;
+    }
+
+    &.shipped {
+      background-color: #6fcaea;
+    }
+  }
+}
