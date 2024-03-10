@@ -118,7 +118,7 @@ let sortBy = ref('')
 const newSortedByValue = computed(() => {
   const sortedDeliveries = [...deliveries.value]
   return sortedDeliveries.sort(
-    (a, b) => sortBy.value === 'location' && a.location.localeCompare(b.location)
+    (a, b) => sortBy.value === 'customer' && a.location.localeCompare(b.location)
   )
 })
 

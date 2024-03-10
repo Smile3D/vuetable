@@ -114,7 +114,7 @@ let deliveries = ref([
   }
 ])
 
-let sortBy = ref('')
+let sortBy = ref('location')
 const newSortedByValue = computed(() => {
   const sortedDeliveries = [...deliveries.value]
   return sortedDeliveries.sort(
