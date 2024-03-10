@@ -115,13 +115,14 @@ let deliveries = ref([
 ])
 
 let sortBy = ref('location')
-console.log(sortBy, 'sortBysortBy')
-const newSortedByValue = computed(() => {
-  const sortedDeliveries = [...deliveries.value]
-  return sortedDeliveries.sort((a, b) => sortBy.value === 'location' && a.location > b.location)
+const setNewSortedBy = computed(() => {
+  console.log('ssss')
+  return deliveries.value
+    .sort((a, b) => sortBy.value === 'location' && a.location > b.location)
+    .filter((item) => item.customer.name)
 })
 
-console.log(newSortedByValue, 'setNewSortedBy')
+console.log(setNewSortedBy, 'setNewSortedBy')
 </script>
 
 <template>
@@ -143,7 +144,7 @@ console.log(newSortedByValue, 'setNewSortedBy')
         </div>
       </div>
       <div class="tbody">
-        <div class="tr" v-for="delivery in newSortedByValue" :key="delivery.customer.id">
+        <div class="tr" v-for="delivery in setNewSortedBy" :key="delivery.customer.id">
           <div class="td">{{ delivery.id }}</div>
           <div class="td">{{ delivery.customer.name }}</div>
           <div class="td">{{ delivery.location }}</div>
