@@ -103,10 +103,16 @@ function onSort(columnKey) {
     }
   }
 }
+
+// const onSearch = computed(() => {
+//   return deliveries.value.filter((item) => item.name.includes(filterByName))
+// })
+
+// console.log(onSearch)
 </script>
+
 <template>
   <div class="table-wrapper">
-    {{ filterByName }}
     <div class="table-row-action">
       <div class="input-holder">
         <input v-model="filterByName" type="text" placeholder="Search by name" />
@@ -118,13 +124,11 @@ function onSort(columnKey) {
           <div class="th">Id</div>
           <div class="th">Customer</div>
           <div class="th" @click="onSort('location')">
-            Location <img src="../assets/images/sort.svg" />
+            Location <font-awesome-icon icon="sort" />
           </div>
           <div class="th">Order Date</div>
           <div class="th">Status</div>
-          <div class="th" @click="onSort('amount')">
-            Amount <img src="../assets/images/sort.svg" />
-          </div>
+          <div class="th" @click="onSort('amount')">Amount</div>
         </div>
       </div>
       <div class="tbody">

@@ -1,10 +1,13 @@
 <script setup>
 // import BaseContainer from '@/components/BaseContainer.vue';
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 let deliveries = ref([
   {
     id: 1,
-    name: 'John Smith',
+    customer: {
+      name: 'John Smith',
+      avatar: 'https://example.com/john_smith_avatar.jpg'
+    },
     location: 'Tokio',
     order_date: '2024-03-08',
     status: 'Shipped',
@@ -12,7 +15,10 @@ let deliveries = ref([
   },
   {
     id: 2,
-    name: 'Maria Johnson',
+    customer: {
+      name: 'Maria Johnson',
+      avatar: 'https://example.com/maria_johnson_avatar.jpg'
+    },
     location: 'New York',
     order_date: '2024-03-09',
     status: 'Delivered',
@@ -20,7 +26,10 @@ let deliveries = ref([
   },
   {
     id: 3,
-    name: 'Alex Brown',
+    customer: {
+      name: 'Alex Brown',
+      avatar: 'https://example.com/alex_brown_avatar.jpg'
+    },
     location: 'Tokio',
     order_date: '2024-03-10',
     status: 'Pending',
@@ -28,7 +37,10 @@ let deliveries = ref([
   },
   {
     id: 4,
-    name: 'Eva Davis',
+    customer: {
+      name: 'Eva Davis',
+      avatar: 'https://example.com/eva_davis_avatar.jpg'
+    },
     location: 'New York',
     order_date: '2024-03-11',
     status: 'Shipped',
@@ -36,7 +48,10 @@ let deliveries = ref([
   },
   {
     id: 5,
-    name: 'Peter Wilson',
+    customer: {
+      name: 'Peter Wilson',
+      avatar: 'https://example.com/peter_wilson_avatar.jpg'
+    },
     location: 'Tokio',
     order_date: '2024-07-12',
     status: 'Delivered',
@@ -44,7 +59,10 @@ let deliveries = ref([
   },
   {
     id: 6,
-    name: 'Sophia Miller',
+    customer: {
+      name: 'Sophia Miller',
+      avatar: 'https://example.com/sophia_miller_avatar.jpg'
+    },
     location: 'Denver',
     order_date: '2024-05-13',
     status: 'Cancelled',
@@ -52,7 +70,10 @@ let deliveries = ref([
   },
   {
     id: 7,
-    name: 'William Jones',
+    customer: {
+      name: 'William Jones',
+      avatar: 'https://example.com/william_jones_avatar.jpg'
+    },
     location: 'Las Vegas',
     order_date: '2024-03-14',
     status: 'Delivered',
@@ -60,7 +81,10 @@ let deliveries = ref([
   },
   {
     id: 8,
-    name: 'Olivia Taylor',
+    customer: {
+      name: 'Olivia Taylor',
+      avatar: 'https://example.com/olivia_taylor_avatar.jpg'
+    },
     location: 'Las Vegas',
     order_date: '2024-05-15',
     status: 'Pending',
@@ -68,7 +92,10 @@ let deliveries = ref([
   },
   {
     id: 9,
-    name: 'Daniel Moore',
+    customer: {
+      name: 'Daniel Moore',
+      avatar: 'https://example.com/daniel_moore_avatar.jpg'
+    },
     location: 'Denver',
     order_date: '2024-04-16',
     status: 'Shipped',
@@ -76,7 +103,10 @@ let deliveries = ref([
   },
   {
     id: 10,
-    name: 'Emma Brown',
+    customer: {
+      name: 'Emma Brown',
+      avatar: 'https://example.com/emma_brown_avatar.jpg'
+    },
     location: 'Tokio',
     order_date: '2024-06-16',
     status: 'Delivered',
@@ -85,7 +115,6 @@ let deliveries = ref([
 ])
 
 let sortByValue = ref(false)
-let filterByName = ref('')
 
 function onSort(columnKey) {
   sortByValue.value = !sortByValue.value
@@ -104,12 +133,12 @@ function onSort(columnKey) {
   }
 }
 </script>
+
 <template>
   <div class="table-wrapper">
-    {{ filterByName }}
     <div class="table-row-action">
       <div class="input-holder">
-        <input v-model="filterByName" type="text" placeholder="Search by name" />
+        <input v-model="searchValue" type="text" placeholder="Search by name" />
       </div>
     </div>
     <div class="table">
@@ -118,26 +147,24 @@ function onSort(columnKey) {
           <div class="th">Id</div>
           <div class="th">Customer</div>
           <div class="th" @click="onSort('location')">
-            Location <img src="../assets/images/sort.svg" />
+            Location <font-awesome-icon icon="sort" />
           </div>
           <div class="th">Order Date</div>
           <div class="th">Status</div>
-          <div class="th" @click="onSort('amount')">
-            Amount <img src="../assets/images/sort.svg" />
-          </div>
+          <div class="th" @click="onSort('amount')">Amount</div>
         </div>
       </div>
       <div class="tbody">
-        <div class="tr" v-for="deliveryItem in deliveries" :key="deliveryItem.id">
-          <div class="td">{{ deliveryItem.id }}</div>
-          <div class="td">{{ deliveryItem.name }}</div>
-          <div class="td">{{ deliveryItem.location }}</div>
-          <div class="td">{{ deliveryItem.order_date }}</div>
-          <div class="td status" :class="[deliveryItem.status.toLowerCase()]">
-            {{ deliveryItem.status }}
+        <div class="tr" v-for="delivery in deliveries" :key="delivery.customer.id">
+          <div class="td">{{ delivery.id }}</div>
+          <div class="td">{{ delivery.customer.name }}</div>
+          <div class="td">{{ delivery.location }}</div>
+          <div class="td">{{ delivery.order_date }}</div>
+          <div class="td status" :class="[delivery.status.toLowerCase()]">
+            {{ delivery.status }}
           </div>
           <div class="td">
-            <strong>${{ deliveryItem.amount }}</strong>
+            <strong>${{ delivery.amount }}</strong>
           </div>
         </div>
       </div>

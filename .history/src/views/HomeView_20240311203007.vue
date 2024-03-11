@@ -103,10 +103,16 @@ function onSort(columnKey) {
     }
   }
 }
+
+// const onSearch = computed(() => {
+//   return deliveries.value.filter((item) => item.name.includes(filterByName))
+// })
+
+// console.log(onSearch)
 </script>
+
 <template>
   <div class="table-wrapper">
-    {{ filterByName }}
     <div class="table-row-action">
       <div class="input-holder">
         <input v-model="filterByName" type="text" placeholder="Search by name" />
@@ -118,26 +124,24 @@ function onSort(columnKey) {
           <div class="th">Id</div>
           <div class="th">Customer</div>
           <div class="th" @click="onSort('location')">
-            Location <img src="../assets/images/sort.svg" />
+            Location <font-awesome-icon icon="sort" />
           </div>
           <div class="th">Order Date</div>
           <div class="th">Status</div>
-          <div class="th" @click="onSort('amount')">
-            Amount <img src="../assets/images/sort.svg" />
-          </div>
+          <div class="th" @click="onSort('amount')">Amount</div>
         </div>
       </div>
       <div class="tbody">
-        <div class="tr" v-for="deliveryItem in deliveries" :key="deliveryItem.id">
-          <div class="td">{{ deliveryItem.id }}</div>
-          <div class="td">{{ deliveryItem.name }}</div>
-          <div class="td">{{ deliveryItem.location }}</div>
-          <div class="td">{{ deliveryItem.order_date }}</div>
-          <div class="td status" :class="[deliveryItem.status.toLowerCase()]">
-            {{ deliveryItem.status }}
+        <div class="tr" v-for="delivery in deliveries" :key="delivery.id">
+          <div class="td">{{ delivery.id }}</div>
+          <div class="td">{{ delivery.name }}</div>
+          <div class="td">{{ delivery.location }}</div>
+          <div class="td">{{ delivery.order_date }}</div>
+          <div class="td status" :class="[delivery.status.toLowerCase()]">
+            {{ delivery.status }}
           </div>
           <div class="td">
-            <strong>${{ deliveryItem.amount }}</strong>
+            <strong>${{ delivery.amount }}</strong>
           </div>
         </div>
       </div>

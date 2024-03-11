@@ -87,22 +87,26 @@ let deliveries = ref([
 let sortByValue = ref(false)
 let filterByName = ref('')
 
-function onSort(columnKey) {
-  sortByValue.value = !sortByValue.value
-  if (columnKey === 'location') {
-    if (sortByValue.value) {
-      deliveries.value.sort((a, b) => a[columnKey].localeCompare(b[columnKey]))
-    } else {
-      deliveries.value.sort((a, b) => b[columnKey].localeCompare(a[columnKey]))
-    }
-  } else {
-    if (sortByValue.value) {
-      deliveries.value.sort((a, b) => a[columnKey] - b[columnKey])
-    } else {
-      deliveries.value.sort((a, b) => b[columnKey] - a[columnKey])
-    }
-  }
-}
+// function onSort(columnKey) {
+//   sortByValue.value = !sortByValue.value
+//   if (columnKey === 'location') {
+//     if (sortByValue.value) {
+//       deliveries.value.sort((a, b) => a[columnKey].localeCompare(b[columnKey]))
+//     } else {
+//       deliveries.value.sort((a, b) => b[columnKey].localeCompare(a[columnKey]))
+//     }
+//   } else {
+//     if (sortByValue.value) {
+//       deliveries.value.sort((a, b) => a[columnKey] - b[columnKey])
+//     } else {
+//       deliveries.value.sort((a, b) => b[columnKey] - a[columnKey])
+//     }
+//   }
+// }
+
+const getDelivered = computed(() => {
+  return deliveries.value.filter((item) => item.name.toLowerCase().includes(filterByName.value))
+})
 </script>
 <template>
   <div class="table-wrapper">

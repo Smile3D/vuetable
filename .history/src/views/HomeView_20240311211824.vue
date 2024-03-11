@@ -87,22 +87,27 @@ let deliveries = ref([
 let sortByValue = ref(false)
 let filterByName = ref('')
 
-function onSort(columnKey) {
-  sortByValue.value = !sortByValue.value
-  if (columnKey === 'location') {
-    if (sortByValue.value) {
-      deliveries.value.sort((a, b) => a[columnKey].localeCompare(b[columnKey]))
-    } else {
-      deliveries.value.sort((a, b) => b[columnKey].localeCompare(a[columnKey]))
-    }
-  } else {
-    if (sortByValue.value) {
-      deliveries.value.sort((a, b) => a[columnKey] - b[columnKey])
-    } else {
-      deliveries.value.sort((a, b) => b[columnKey] - a[columnKey])
-    }
-  }
-}
+// function onSort(columnKey) {
+//   sortByValue.value = !sortByValue.value
+//   if (columnKey === 'location') {
+//     if (sortByValue.value) {
+//       deliveries.value.sort((a, b) => a[columnKey].localeCompare(b[columnKey]))
+//     } else {
+//       deliveries.value.sort((a, b) => b[columnKey].localeCompare(a[columnKey]))
+//     }
+//   } else {
+//     if (sortByValue.value) {
+//       deliveries.value.sort((a, b) => a[columnKey] - b[columnKey])
+//     } else {
+//       deliveries.value.sort((a, b) => b[columnKey] - a[columnKey])
+//     }
+//   }
+// }
+
+const getDelivered = computed(() => {
+  let test = [...deliveries.value]
+  return test.filter((item) => item.name.toLowerCase().includes(filterByName))
+})
 </script>
 <template>
   <div class="table-wrapper">
@@ -128,7 +133,7 @@ function onSort(columnKey) {
         </div>
       </div>
       <div class="tbody">
-        <div class="tr" v-for="deliveryItem in deliveries" :key="deliveryItem.id">
+        <div class="tr" v-for="deliveryItem in getDelivered" :key="deliveryItem.id">
           <div class="td">{{ deliveryItem.id }}</div>
           <div class="td">{{ deliveryItem.name }}</div>
           <div class="td">{{ deliveryItem.location }}</div>

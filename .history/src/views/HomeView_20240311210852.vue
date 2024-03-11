@@ -103,6 +103,12 @@ function onSort(columnKey) {
     }
   }
 }
+
+const onSearch = computed(() => {
+  return deliveries.value.filter((item) => item.name.toLowerCase().includes(filterByName.value))
+})
+
+console.log(onSearch)
 </script>
 <template>
   <div class="table-wrapper">
