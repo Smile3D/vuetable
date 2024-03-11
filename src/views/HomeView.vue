@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import BaseTableRow from '@/components/BaseTableRow.vue'
 let deliveries = ref([
   {
     id: 1,
@@ -119,18 +120,15 @@ function onSort(columnKey) {
         </div>
       </div>
       <div class="tbody">
-        <div class="tr" v-for="deliveryItem in deliveries" :key="deliveryItem.id">
-          <div class="td">{{ deliveryItem.id }}</div>
-          <div class="td">{{ deliveryItem.name }}</div>
-          <div class="td">{{ deliveryItem.location }}</div>
-          <div class="td">{{ deliveryItem.order_date }}</div>
-          <div class="td status" :class="[deliveryItem.status.toLowerCase()]">
-            {{ deliveryItem.status }}
-          </div>
-          <div class="td">
-            <strong>${{ deliveryItem.amount }}</strong>
-          </div>
-        </div>
+        <BaseTableRow
+          v-for="deliveryItem in deliveries"
+          :key="deliveryItem.id"
+          :id="deliveryItem.id"
+          :name="deliveryItem.name"
+          :location="deliveryItem.location"
+          :orderDate="deliveryItem.order_date"
+          :status="deliveryItem.status"
+         />
       </div>
     </div>
   </div>
