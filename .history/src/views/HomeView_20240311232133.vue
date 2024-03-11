@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 let deliveries = ref([
   {
     id: 1,
@@ -84,6 +84,7 @@ let deliveries = ref([
 ])
 
 let sortByValue = ref(false)
+// let filterByName = ref('')
 function onSort(columnKey) {
   sortByValue.value = !sortByValue.value
   if (columnKey === 'location') {
@@ -103,6 +104,12 @@ function onSort(columnKey) {
 </script>
 <template>
   <div class="table-wrapper">
+    {{ filterByName }}
+    <div class="table-row-action">
+      <div class="input-holder">
+        <input v-model="filterByName" type="text" placeholder="Search by name" />
+      </div>
+    </div>
     <div class="table">
       <div class="thead">
         <div class="tr">
@@ -119,7 +126,7 @@ function onSort(columnKey) {
         </div>
       </div>
       <div class="tbody">
-        <div class="tr" v-for="deliveryItem in deliveries" :key="deliveryItem.id">
+        <div class="tr" v-for="deliveryItem in sortedDeliveries" :key="deliveryItem.id">
           <div class="td">{{ deliveryItem.id }}</div>
           <div class="td">{{ deliveryItem.name }}</div>
           <div class="td">{{ deliveryItem.location }}</div>

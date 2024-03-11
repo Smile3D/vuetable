@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue'
+// import BaseContainer from '@/components/BaseContainer.vue';
+import { ref, computed } from 'vue'
 let deliveries = ref([
   {
     id: 1,
@@ -83,32 +84,49 @@ let deliveries = ref([
   }
 ])
 
-let sortByValue = ref(false)
-function onSort(columnKey) {
-  sortByValue.value = !sortByValue.value
-  if (columnKey === 'location') {
-    if (sortByValue.value) {
-      deliveries.value.sort((a, b) => a[columnKey].localeCompare(b[columnKey]))
-    } else {
-      deliveries.value.sort((a, b) => b[columnKey].localeCompare(a[columnKey]))
-    }
+let sortByValue = ref('')
+let filterByName = ref('')
+let test = ref(false)
+// function onSort(columnKey) {
+//   sortByValue.value = !sortByValue.value
+//   if (columnKey === 'location') {
+//     if (sortByValue.value) {
+//       deliveries.value.sort((a, b) => a[columnKey].localeCompare(b[columnKey]))
+//     } else {
+//       deliveries.value.sort((a, b) => b[columnKey].localeCompare(a[columnKey]))
+//     }
+//   } else {
+//     if (sortByValue.value) {
+//       deliveries.value.sort((a, b) => a[columnKey] - b[columnKey])
+//     } else {
+//       deliveries.value.sort((a, b) => b[columnKey] - a[columnKey])
+//     }
+//   }
+// }
+
+const sortedDeliveries = computed(() => {
+  let cloneDeliveries = [...deliveries.value]
+  if (sortByValue.value === 'location' && test.value === true) {
+    return cloneDeliveries.sort((a, b) => a.location.localeCompare(b.location))
   } else {
-    if (sortByValue.value) {
-      deliveries.value.sort((a, b) => a[columnKey] - b[columnKey])
-    } else {
-      deliveries.value.sort((a, b) => b[columnKey] - a[columnKey])
-    }
+    return cloneDeliveries.sort((a, b) => b.location.localeCompare(a.location))
   }
-}
+})
 </script>
 <template>
   <div class="table-wrapper">
+    {{ filterByName }}
+    <div class="table-row-action">
+      <div class="input-holder">
+        <input v-model="filterByName" type="text" placeholder="Search by name" />
+      </div>
+    </div>
     <div class="table">
       <div class="thead">
         <div class="tr">
           <div class="th">Id</div>
           <div class="th">Customer</div>
-          <div class="th" @click="onSort('location')">
+          <div class="th" @click="(sortByValue = 'location'), (test = true)">
             Location <img src="../assets/images/sort.svg" />
           </div>
           <div class="th">Order Date</div>
@@ -119,7 +137,7 @@ function onSort(columnKey) {
         </div>
       </div>
       <div class="tbody">
-        <div class="tr" v-for="deliveryItem in deliveries" :key="deliveryItem.id">
+        <div class="tr" v-for="deliveryItem in sortedDeliveries" :key="deliveryItem.id">
           <div class="td">{{ deliveryItem.id }}</div>
           <div class="td">{{ deliveryItem.name }}</div>
           <div class="td">{{ deliveryItem.location }}</div>
