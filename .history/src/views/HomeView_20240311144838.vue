@@ -145,11 +145,11 @@ function onSort(columnKey) {
       <div class="thead">
         <div class="tr">
           <div class="th">Id</div>
-          <div class="th">Customer</div>
+          <div class="th" @click="onSort('amount')">Customer</div>
           <div class="th" @click="onSort('location')">Location</div>
           <div class="th">Order Date</div>
           <div class="th">Status</div>
-          <div class="th" @click="onSort('amount')">Amount</div>
+          <div class="th">Amount</div>
         </div>
       </div>
       <div class="tbody">

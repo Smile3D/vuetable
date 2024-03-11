@@ -1,6 +1,6 @@
 <script setup>
 // import BaseContainer from '@/components/BaseContainer.vue';
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 let deliveries = ref([
   {
     id: 1,
@@ -114,24 +114,36 @@ let deliveries = ref([
   }
 ])
 
+// let sortBy = ref('')
 let sortByValue = ref(false)
+// let searchValue = ref('')
+const newSortedByValue = computed(() => {
+  const sortedDeliveries = [...deliveries.value]
+  return sortedDeliveries.sort(
+    (a, b) => sortByValue.value === true && a.location.localeCompare(b.location)
+  )
+})
 
 function onSort(columnKey) {
   sortByValue.value = !sortByValue.value
   if (columnKey === 'location') {
     if (sortByValue.value) {
-      deliveries.value.sort((a, b) => a[columnKey].localeCompare(b[columnKey]))
+      return deliveries.value.sort((a, b) => a[columnKey] > b[columnKey])
     } else {
-      deliveries.value.sort((a, b) => b[columnKey].localeCompare(a[columnKey]))
+      return deliveries.value.sort((a, b) => b[columnKey] < a[columnKey])
     }
   } else {
     if (sortByValue.value) {
-      deliveries.value.sort((a, b) => a[columnKey] - b[columnKey])
+      return deliveries.value.sort((a, b) => a[columnKey] > b[columnKey])
     } else {
-      deliveries.value.sort((a, b) => b[columnKey] - a[columnKey])
+      return deliveries.value.sort((a, b) => b[columnKey] < a[columnKey])
     }
   }
+
+  //   const sortedDeliveries = [...deliveries.value]
 }
+
+console.log(newSortedByValue, 'setNewSortedBy')
 </script>
 
 <template>
@@ -145,11 +157,11 @@ function onSort(columnKey) {
       <div class="thead">
         <div class="tr">
           <div class="th">Id</div>
-          <div class="th">Customer</div>
+          <div class="th" @click="onSort('amount')">Customer</div>
           <div class="th" @click="onSort('location')">Location</div>
           <div class="th">Order Date</div>
           <div class="th">Status</div>
-          <div class="th" @click="onSort('amount')">Amount</div>
+          <div class="th">Amount</div>
         </div>
       </div>
       <div class="tbody">

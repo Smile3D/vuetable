@@ -1,6 +1,6 @@
 <script setup>
 // import BaseContainer from '@/components/BaseContainer.vue';
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 let deliveries = ref([
   {
     id: 1,
@@ -114,24 +114,24 @@ let deliveries = ref([
   }
 ])
 
+let sortBy = ref('')
 let sortByValue = ref(false)
+// let searchValue = ref('')
+const newSortedByValue = computed(() => {
+  const sortedDeliveries = [...deliveries.value]
+  return sortedDeliveries.sort(
+    (a, b) => sortByValue.value === true && a.location.localeCompare(b.location)
+  )
+})
 
 function onSort(columnKey) {
   sortByValue.value = !sortByValue.value
-  if (columnKey === 'location') {
-    if (sortByValue.value) {
-      deliveries.value.sort((a, b) => a[columnKey].localeCompare(b[columnKey]))
-    } else {
-      deliveries.value.sort((a, b) => b[columnKey].localeCompare(a[columnKey]))
-    }
-  } else {
-    if (sortByValue.value) {
-      deliveries.value.sort((a, b) => a[columnKey] - b[columnKey])
-    } else {
-      deliveries.value.sort((a, b) => b[columnKey] - a[columnKey])
-    }
-  }
+  return sortedDeliveries.sort(
+    (a, b) => sortByValue.value === true && a.location.localeCompare(b.location)
+  )
 }
+
+console.log(newSortedByValue, 'setNewSortedBy')
 </script>
 
 <template>
@@ -149,11 +149,11 @@ function onSort(columnKey) {
           <div class="th" @click="onSort('location')">Location</div>
           <div class="th">Order Date</div>
           <div class="th">Status</div>
-          <div class="th" @click="onSort('amount')">Amount</div>
+          <div class="th">Amount</div>
         </div>
       </div>
       <div class="tbody">
-        <div class="tr" v-for="delivery in deliveries" :key="delivery.customer.id">
+        <div class="tr" v-for="delivery in newSortedByValue" :key="delivery.customer.id">
           <div class="td">{{ delivery.id }}</div>
           <div class="td">{{ delivery.customer.name }}</div>
           <div class="td">{{ delivery.location }}</div>
