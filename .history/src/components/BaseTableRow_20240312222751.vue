@@ -1,5 +1,5 @@
 <script setup>
-// import { defineEmits } from 'vue'
+import { defineEmits } from 'vue'
 defineProps({
   id: Number,
   name: String,
@@ -8,7 +8,7 @@ defineProps({
   status: String,
   amount: String
 })
-// defineEmits(['onClickEditData'])
+const emit = defineEmits(['onOpenModel'])
 // function onClickEditData() {
 //   emit('onOpenModel')
 // }

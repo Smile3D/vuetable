@@ -87,7 +87,7 @@ let deliveries = ref([
 ])
 
 let sortByValue = ref(false)
-// const isModalVisible = ref(false)
+const isModalVisible = ref(false)
 function onSort(columnKey) {
   sortByValue.value = !sortByValue.value
   if (columnKey === 'location') {
@@ -104,12 +104,8 @@ function onSort(columnKey) {
     }
   }
 }
-// const onOpenModal = (val) => {
-//   console.log(val, 'val')
-// }
-
-function isOpenModal() {
-  console.log('val')
+const onOpenModal = () => {
+  isModalVisible.value = true
 }
 </script>
 <template>
@@ -140,10 +136,9 @@ function isOpenModal() {
           :orderDate="deliveryItem.order_date"
           :status="deliveryItem.status"
           :amount="deliveryItem.amount"
-          @on-сlick-edit-data="isOpenModal"
         />
       </div>
     </div>
   </div>
-  <BaseModal />
+  <BaseModal :openModal="false" />
 </template>

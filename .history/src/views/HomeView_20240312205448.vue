@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import BaseTableRow from '@/components/BaseTableRow.vue'
 import BaseModal from '@/components/BaseModal.vue'
-
 let deliveries = ref([
   {
     id: 1,
@@ -87,7 +86,6 @@ let deliveries = ref([
 ])
 
 let sortByValue = ref(false)
-// const isModalVisible = ref(false)
 function onSort(columnKey) {
   sortByValue.value = !sortByValue.value
   if (columnKey === 'location') {
@@ -103,13 +101,6 @@ function onSort(columnKey) {
       deliveries.value.sort((a, b) => b[columnKey] - a[columnKey])
     }
   }
-}
-// const onOpenModal = (val) => {
-//   console.log(val, 'val')
-// }
-
-function isOpenModal() {
-  console.log('val')
 }
 </script>
 <template>
@@ -140,10 +131,8 @@ function isOpenModal() {
           :orderDate="deliveryItem.order_date"
           :status="deliveryItem.status"
           :amount="deliveryItem.amount"
-          @on-сlick-edit-data="isOpenModal"
         />
       </div>
     </div>
   </div>
-  <BaseModal />
 </template>

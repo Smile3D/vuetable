@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, defineEmits } from 'vue'
 import BaseTableRow from '@/components/BaseTableRow.vue'
 import BaseModal from '@/components/BaseModal.vue'
 
@@ -140,7 +140,7 @@ function isOpenModal() {
           :orderDate="deliveryItem.order_date"
           :status="deliveryItem.status"
           :amount="deliveryItem.amount"
-          @on-сlick-edit-data="isOpenModal"
+          @on-open-model="isOpenModal"
         />
       </div>
     </div>

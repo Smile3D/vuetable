@@ -108,8 +108,8 @@ function onSort(columnKey) {
 //   console.log(val, 'val')
 // }
 
-function isOpenModal() {
-  console.log('val')
+function isOpenModal(val) {
+  console.log(val, 'val')
 }
 </script>
 <template>
@@ -140,7 +140,7 @@ function isOpenModal() {
           :orderDate="deliveryItem.order_date"
           :status="deliveryItem.status"
           :amount="deliveryItem.amount"
-          @on-сlick-edit-data="isOpenModal"
+          @onOpenModal="isOpenModal()"
         />
       </div>
     </div>

@@ -1,5 +1,4 @@
 <script setup>
-// import { defineEmits } from 'vue'
 defineProps({
   id: Number,
   name: String,
@@ -8,10 +7,10 @@ defineProps({
   status: String,
   amount: String
 })
-// defineEmits(['onClickEditData'])
-// function onClickEditData() {
-//   emit('onOpenModel')
-// }
+const emit = defineEmits(['inFocus', 'submit'])
+function onClickEditData() {
+  emit('submit')
+}
 </script>
 
 <template>
@@ -27,7 +26,7 @@ defineProps({
       <strong>${{ amount }}</strong>
     </div>
     <div class="td">
-      <button type="button" class="btn-edit" @click="$emit(onClickEditData)">
+      <button type="button" class="btn-edit" @click="buttonClick">
         <img src="@/assets/images/icon-edit.svg" />
       </button>
     </div>
