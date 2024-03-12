@@ -144,5 +144,5 @@ const isOpenModal = (id) => {
       </div>
     </div>
   </div>
-  <BaseModal @some-event="isOpenModal" />
+  <BaseModal @test="isOpenModal" />
 </template>

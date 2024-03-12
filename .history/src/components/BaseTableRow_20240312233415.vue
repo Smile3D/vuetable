@@ -1,18 +1,19 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue'
-const props = defineProps({
+
+defineProps({
   id: Number,
   name: String,
   location: String,
   orderDate: String,
   status: String,
-  amount: Number
+  amount: String
 })
-const emit = defineEmits(['someEvent'])
-const test = () => {
-  emit('someEvent', props.id)
-}
+// defineEmits(['onClickEditData'])
+// function onClickEditData() {
+//   emit('onOpenModel')
+// }
 </script>
+
 <template>
   <div class="tr">
     <div class="td">{{ id }}</div>
@@ -26,7 +27,7 @@ const test = () => {
       <strong>${{ amount }}</strong>
     </div>
     <div class="td">
-      <button type="button" class="btn-edit" @click="test">
+      <button type="button" class="btn-edit" @click="$emit("onClickEditData")">
         <img src="@/assets/images/icon-edit.svg" />
       </button>
     </div>

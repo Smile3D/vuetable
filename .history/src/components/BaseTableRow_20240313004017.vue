@@ -10,6 +10,7 @@ const props = defineProps({
 })
 const emit = defineEmits(['someEvent'])
 const test = () => {
+  console.log('sss', props.id)
   emit('someEvent', props.id)
 }
 </script>
@@ -26,7 +27,7 @@ const test = () => {
       <strong>${{ amount }}</strong>
     </div>
     <div class="td">
-      <button type="button" class="btn-edit" @click="test">
+      <button type="button" class="btn-edit" @click="$emit('ontesttest', id)">
         <img src="@/assets/images/icon-edit.svg" />
       </button>
     </div>

@@ -108,7 +108,7 @@ function onSort(columnKey) {
 // const onOpenModal = (val) => {
 //   console.log(val, 'val')
 // }
-const isOpenModal = (id) => {
+const testqw = (id) => {
   console.log(id, 'sssssfffff')
 }
 </script>
@@ -144,5 +144,5 @@ const isOpenModal = (id) => {
       </div>
     </div>
   </div>
-  <BaseModal @some-event="isOpenModal" />
+  <BaseModal @test-test="testqw()" />
 </template>

@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineProps } from 'vue'
 const props = defineProps({
   id: Number,
   name: String,
@@ -10,6 +10,7 @@ const props = defineProps({
 })
 const emit = defineEmits(['someEvent'])
 const test = () => {
+  console.log('sss', props.id)
   emit('someEvent', props.id)
 }
 </script>

@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineProps } from 'vue'
 const props = defineProps({
   id: Number,
   name: String,
@@ -10,9 +10,11 @@ const props = defineProps({
 })
 const emit = defineEmits(['someEvent'])
 const test = () => {
-  emit('someEvent', props.id)
+  console.log('sss')
+  emit('someEvent')
 }
 </script>
+
 <template>
   <div class="tr">
     <div class="td">{{ id }}</div>

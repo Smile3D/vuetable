@@ -104,12 +104,11 @@ function onSort(columnKey) {
     }
   }
 }
-
 // const onOpenModal = (val) => {
 //   console.log(val, 'val')
 // }
-const isOpenModal = (id) => {
-  console.log(id, 'sssssfffff')
+function isOpenModal(v) {
+  console.log(v, 'val')
 }
 </script>
 <template>
@@ -140,9 +139,10 @@ const isOpenModal = (id) => {
           :orderDate="deliveryItem.order_date"
           :status="deliveryItem.status"
           :amount="deliveryItem.amount"
+          @on-сlick-edit-data="isOpenModal"
         />
       </div>
     </div>
   </div>
-  <BaseModal @some-event="isOpenModal" />
+  <BaseModal />
 </template>

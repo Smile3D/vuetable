@@ -108,8 +108,8 @@ function onSort(columnKey) {
 // const onOpenModal = (val) => {
 //   console.log(val, 'val')
 // }
-const isOpenModal = (id) => {
-  console.log(id, 'sssssfffff')
+function isOpenModal() {
+  console.log('val')
 }
 </script>
 <template>
@@ -144,5 +144,5 @@ const isOpenModal = (id) => {
       </div>
     </div>
   </div>
-  <BaseModal @some-event="isOpenModal" />
+  <BaseModal @on-click-edit-data="isOpenModal" />
 </template>

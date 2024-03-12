@@ -10,6 +10,7 @@ const props = defineProps({
 })
 const emit = defineEmits(['someEvent'])
 const test = () => {
+  console.log('sss', props.id)
   emit('someEvent', props.id)
 }
 </script>

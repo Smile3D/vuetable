@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, defineEmits } from 'vue'
 import BaseTableRow from '@/components/BaseTableRow.vue'
 import BaseModal from '@/components/BaseModal.vue'
 
@@ -104,12 +104,12 @@ function onSort(columnKey) {
     }
   }
 }
-
 // const onOpenModal = (val) => {
 //   console.log(val, 'val')
 // }
-const isOpenModal = (id) => {
-  console.log(id, 'sssssfffff')
+defineEmits(['onClickEditData'])
+function isOpenModal(v) {
+  console.log(v, 'val')
 }
 </script>
 <template>
@@ -140,9 +140,10 @@ const isOpenModal = (id) => {
           :orderDate="deliveryItem.order_date"
           :status="deliveryItem.status"
           :amount="deliveryItem.amount"
+          @on-сlick-edit-data="isOpenModal"
         />
       </div>
     </div>
   </div>
-  <BaseModal @some-event="isOpenModal" />
+  <BaseModal />
 </template>

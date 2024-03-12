@@ -1,18 +1,3 @@
-<script setup>
-import { defineProps, defineEmits } from 'vue'
-const props = defineProps({
-  id: Number,
-  name: String,
-  location: String,
-  orderDate: String,
-  status: String,
-  amount: Number
-})
-const emit = defineEmits(['someEvent'])
-const test = () => {
-  emit('someEvent', props.id)
-}
-</script>
 <template>
   <div class="tr">
     <div class="td">{{ id }}</div>
@@ -32,3 +17,20 @@ const test = () => {
     </div>
   </div>
 </template>
+
+<script setup>
+import { defineProps } from 'vue'
+const props = defineProps({
+  id: Number,
+  name: String,
+  location: String,
+  orderDate: String,
+  status: String,
+  amount: Number
+})
+const emit = defineEmits(['someEvent'])
+const test = () => {
+  console.log('sss', props.id)
+  emit('someEvent', props.id)
+}
+</script>
