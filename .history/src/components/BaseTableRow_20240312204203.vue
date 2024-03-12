@@ -22,7 +22,7 @@ defineProps({
       <strong>${{ amount }}</strong>
     </div>
     <div class="td">
-      <button type="button" class="btn-edit"><img src="@/assets/images/icon-edit.svg" /></button>
+      <button type="button" class="btn-edit"<img src="@/assets/images/icon-edit.svg" /></button>
     </div>
   </div>
 </template>

@@ -117,7 +117,6 @@ function onSort(columnKey) {
           <div class="th" @click="onSort('amount')">
             Amount <img src="@/assets/images/sort.svg" />
           </div>
-          <div class="th"></div>
         </div>
       </div>
       <div class="tbody">

@@ -81,7 +81,7 @@ body {
 .tbody {
   .tr {
     display: grid;
-    grid-template-columns: 60px repeat(4, 1fr) 100px 50px;
+    grid-template-columns: 60px repeat(4, 1fr) 100px 50зч;
     align-items: center;
     padding: 12px 15px;
   }
@@ -98,14 +98,6 @@ body {
 
     &:hover {
       background-color: #fff6;
-    }
-
-    .btn-edit {
-      background-color: transparent;
-      border: none;
-      padding: 0;
-      width: 17px;
-      height: 17px;
     }
   }
 
