@@ -87,8 +87,7 @@ let deliveries = ref([
 ])
 
 let sortByValue = ref(false)
-
-let isModalVisible = ref(false)
+// const isModalVisible = ref(false)
 function onSort(columnKey) {
   sortByValue.value = !sortByValue.value
   if (columnKey === 'location') {
@@ -106,8 +105,11 @@ function onSort(columnKey) {
   }
 }
 
+// const onOpenModal = (val) => {
+//   console.log(val, 'val')
+// }
 const isOpenModal = (id) => {
-  isModalVisible.value = !isModalVisible.value
+  console.log(id, 'sssssfffff')
 }
 </script>
 <template>
@@ -138,10 +140,9 @@ const isOpenModal = (id) => {
           :orderDate="deliveryItem.order_date"
           :status="deliveryItem.status"
           :amount="deliveryItem.amount"
-          @click-edit-data="isOpenModal"
         />
       </div>
     </div>
   </div>
-  <BaseModal :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal" />
+  <BaseModal @test="isOpenModal()" />
 </template>

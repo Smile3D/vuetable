@@ -1,6 +1,6 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue'
-const emit = defineEmits(['clickEditData'])
+const emit = defineEmits(['someEvent'])
 const props = defineProps({
   id: Number,
   name: String,
@@ -11,7 +11,7 @@ const props = defineProps({
 })
 
 const onEditData = () => {
-  emit('clickEditData', props.id)
+  emit('openModal', props.id)
 }
 </script>
 <template>

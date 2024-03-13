@@ -142,8 +142,8 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  max-width: 500px;
-  width: calc(100% - 20px);
+  max-width: 400px;
+  width: 100%;
   min-height: 300px;
 }
 
@@ -155,13 +155,4 @@ body {
   left: 0;
   bottom: 0;
   z-index: 9;
-}
-
-.close-modal {
-  padding: 0;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  top: 15px;
-  right: 15px;
 }

@@ -20,7 +20,6 @@ defineProps({
       <button @click="onCloseModal" class="close-modal" type="button">
         <img src="@/assets/images/icon-close.svg" />
       </button>
-      {{ id }}
     </div>
   </div>
 </template>

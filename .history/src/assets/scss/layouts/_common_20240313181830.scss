@@ -141,27 +141,4 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10;
-  max-width: 500px;
-  width: calc(100% - 20px);
-  min-height: 300px;
-}
-
-.modal-overlay {
-  background-color: rgba(#000, 0.5);
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 9;
-}
-
-.close-modal {
-  padding: 0;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  top: 15px;
-  right: 15px;
 }

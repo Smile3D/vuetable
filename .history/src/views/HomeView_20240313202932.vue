@@ -143,5 +143,7 @@ const isOpenModal = (id) => {
       </div>
     </div>
   </div>
-  <BaseModal :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal" />
+  <BaseModal :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal">
+    <p v-for="deliveryItem in deliveries" :key="deliveryItem.id">{{ deliveryItem.id }}</p>
+  </BaseModal>
 </template>

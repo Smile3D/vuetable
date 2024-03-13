@@ -9,8 +9,7 @@ defineProps({
   isOpenModal: {
     type: Boolean,
     default: false
-  },
-  id: Number
+  }
 })
 </script>
 <template>
@@ -20,7 +19,7 @@ defineProps({
       <button @click="onCloseModal" class="close-modal" type="button">
         <img src="@/assets/images/icon-close.svg" />
       </button>
-      {{ id }}
+      <slot></slot>
     </div>
   </div>
 </template>

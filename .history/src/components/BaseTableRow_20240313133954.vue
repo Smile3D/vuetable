@@ -1,6 +1,5 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue'
-const emit = defineEmits(['clickEditData'])
+import { defineProps } from 'vue'
 const props = defineProps({
   id: Number,
   name: String,
@@ -9,10 +8,12 @@ const props = defineProps({
   status: String,
   amount: Number
 })
+const emit = defineEmit(['someEvent', 'test'])
 
-const onEditData = () => {
-  emit('clickEditData', props.id)
-}
+// console.log('ssd')
+// const test = () => {
+//   emit('someEvent', props.id)
+// }
 </script>
 <template>
   <div class="tr">
@@ -27,7 +28,7 @@ const onEditData = () => {
       <strong>${{ amount }}</strong>
     </div>
     <div class="td">
-      <button type="button" class="btn-edit" @click="onEditData">
+      <button type="button" class="btn-edit" @click="$emit('test', 1)">
         <img src="@/assets/images/icon-edit.svg" />
       </button>
     </div>
