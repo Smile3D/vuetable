@@ -89,6 +89,8 @@ let deliveries = ref([
 let sortByValue = ref(false)
 
 let isModalVisible = ref(false)
+let modalId = ref(0)
+
 function onSort(columnKey) {
   sortByValue.value = !sortByValue.value
   if (columnKey === 'location') {
@@ -107,6 +109,8 @@ function onSort(columnKey) {
 }
 
 const isOpenModal = (id) => {
+  modalId.value = id
+  console.log(modalId.value, 'modalId.value')
   isModalVisible.value = !isModalVisible.value
 }
 </script>
@@ -143,5 +147,7 @@ const isOpenModal = (id) => {
       </div>
     </div>
   </div>
-  <BaseModal :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal" />
+  <BaseModal :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal">
+    <BaseTableRow v-if="isOpenModal(id) === deliveries.id" />
+  </BaseModal>
 </template>

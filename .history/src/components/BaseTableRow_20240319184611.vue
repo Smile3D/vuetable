@@ -31,6 +31,5 @@ const onEditData = () => {
         <img src="@/assets/images/icon-edit.svg" />
       </button>
     </div>
-    <slot></slot>
   </div>
 </template>

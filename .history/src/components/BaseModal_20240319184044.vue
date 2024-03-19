@@ -6,7 +6,7 @@ const onCloseModal = () => {
   emit('clickCloseModal')
 }
 defineProps({
-  isOpenModal: {
+  openModal: {
     type: Boolean,
     default: false
   },
@@ -14,12 +14,13 @@ defineProps({
 })
 </script>
 <template>
-  <div v-show="isOpenModal">
+  <div v-show="openModal">
     <div class="modal-overlay" @click="onCloseModal"></div>
     <div class="modal">
       <button @click="onCloseModal" class="close-modal" type="button">
         <img src="@/assets/images/icon-close.svg" />
       </button>
+      {{ id }}
       <slot></slot>
     </div>
   </div>

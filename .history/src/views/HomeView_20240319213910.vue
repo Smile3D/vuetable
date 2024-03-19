@@ -143,5 +143,7 @@ const isOpenModal = (id) => {
       </div>
     </div>
   </div>
-  <BaseModal :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal" />
+  <BaseModal :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal">
+    <BaseTableRow v-if="isOpenModal(id) === deliveries.id" />
+  </BaseModal>
 </template>

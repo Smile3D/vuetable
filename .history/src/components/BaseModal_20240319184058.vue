@@ -5,16 +5,16 @@ const emit = defineEmits(['clickCloseModal'])
 const onCloseModal = () => {
   emit('clickCloseModal')
 }
-defineProps({
-  isOpenModal: {
-    type: Boolean,
-    default: false
-  },
-  id: Number
-})
+// defineProps({
+//   openModal: {
+//     type: Boolean,
+//     default: false
+//   },
+//   id: Number
+// })
 </script>
 <template>
-  <div v-show="isOpenModal">
+  <div v-show="openModal">
     <div class="modal-overlay" @click="onCloseModal"></div>
     <div class="modal">
       <button @click="onCloseModal" class="close-modal" type="button">

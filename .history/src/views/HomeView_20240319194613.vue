@@ -107,6 +107,7 @@ function onSort(columnKey) {
 }
 
 const isOpenModal = (id) => {
+  console.log(id)
   isModalVisible.value = !isModalVisible.value
 }
 </script>
@@ -143,5 +144,7 @@ const isOpenModal = (id) => {
       </div>
     </div>
   </div>
-  <BaseModal :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal" />
+  <BaseModal :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal">
+    <div></div>
+  </BaseModal>
 </template>
