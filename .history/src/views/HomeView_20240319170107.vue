@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import BaseTableRow from '@/components/BaseTableRow.vue'
-// import BaseModal from '@/components/BaseModal.vue'
+import BaseModal from '@/components/BaseModal.vue'
 
 let deliveries = ref([
   {
@@ -88,7 +88,7 @@ let deliveries = ref([
 
 let sortByValue = ref(false)
 
-// let isModalVisible = ref(false)
+let isModalVisible = ref(false)
 function onSort(columnKey) {
   sortByValue.value = !sortByValue.value
   if (columnKey === 'location') {
@@ -106,9 +106,9 @@ function onSort(columnKey) {
   }
 }
 
-// const isOpenModal = () => {
-//   isModalVisible.value = !isModalVisible.value
-// }
+const isOpenModal = () => {
+  isModalVisible.value = !isModalVisible.value
+}
 </script>
 <template>
   <div class="table-wrapper">
@@ -143,4 +143,5 @@ function onSort(columnKey) {
       </div>
     </div>
   </div>
+  <BaseModal :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal" />
 </template>

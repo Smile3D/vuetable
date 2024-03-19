@@ -12,8 +12,10 @@ const props = defineProps({
 })
 let isModalVisible = ref(false)
 const isOpenModal = () => {
-  console.log('sss')
   isModalVisible.value = !isModalVisible.value
+}
+const onEditData = () => {
+  emit('clickEditData', props.id)
 }
 </script>
 <template>
@@ -29,10 +31,10 @@ const isOpenModal = () => {
       <strong>${{ amount }}</strong>
     </div>
     <div class="td">
-      <button type="button" class="btn-edit" @click="isOpenModal">
+      <button type="button" class="btn-edit" @click="onEditData">
         <img src="@/assets/images/icon-edit.svg" />
       </button>
     </div>
-    <BaseModal :id="id" :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal" />
+    <BaseModal :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal" />
   </div>
 </template>

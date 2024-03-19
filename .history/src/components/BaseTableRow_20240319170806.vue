@@ -15,6 +15,9 @@ const isOpenModal = () => {
   console.log('sss')
   isModalVisible.value = !isModalVisible.value
 }
+const onEditData = () => {
+  emit('clickEditData', props.id)
+}
 </script>
 <template>
   <div class="tr">

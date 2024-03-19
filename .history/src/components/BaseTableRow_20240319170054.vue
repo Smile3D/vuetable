@@ -1,6 +1,5 @@
 <script setup>
-import { ref, defineProps, defineEmits } from 'vue'
-import BaseModal from '@/components/BaseModal.vue'
+import { defineProps, defineEmits } from 'vue'
 const emit = defineEmits(['clickEditData'])
 const props = defineProps({
   id: Number,
@@ -10,10 +9,9 @@ const props = defineProps({
   status: String,
   amount: Number
 })
-let isModalVisible = ref(false)
-const isOpenModal = () => {
-  console.log('sss')
-  isModalVisible.value = !isModalVisible.value
+
+const onEditData = () => {
+  emit('clickEditData', props.id)
 }
 </script>
 <template>
@@ -29,10 +27,9 @@ const isOpenModal = () => {
       <strong>${{ amount }}</strong>
     </div>
     <div class="td">
-      <button type="button" class="btn-edit" @click="isOpenModal">
+      <button type="button" class="btn-edit" @click="onEditData">
         <img src="@/assets/images/icon-edit.svg" />
       </button>
     </div>
-    <BaseModal :id="id" :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal" />
   </div>
 </template>

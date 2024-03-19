@@ -15,6 +15,9 @@ const isOpenModal = () => {
   console.log('sss')
   isModalVisible.value = !isModalVisible.value
 }
+const onEditData = () => {
+  emit('clickEditData', props.id)
+}
 </script>
 <template>
   <div class="tr">
@@ -33,6 +36,6 @@ const isOpenModal = () => {
         <img src="@/assets/images/icon-edit.svg" />
       </button>
     </div>
-    <BaseModal :id="id" :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal" />
+    <BaseModal :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal" />
   </div>
 </template>

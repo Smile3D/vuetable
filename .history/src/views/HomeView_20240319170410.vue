@@ -88,7 +88,7 @@ let deliveries = ref([
 
 let sortByValue = ref(false)
 
-// let isModalVisible = ref(false)
+let isModalVisible = ref(false)
 function onSort(columnKey) {
   sortByValue.value = !sortByValue.value
   if (columnKey === 'location') {

@@ -138,7 +138,6 @@ function onSort(columnKey) {
           :orderDate="deliveryItem.order_date"
           :status="deliveryItem.status"
           :amount="deliveryItem.amount"
-          @click-edit-data="isOpenModal"
         />
       </div>
     </div>
