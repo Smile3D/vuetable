@@ -10,7 +10,6 @@ defineProps({
     type: Boolean,
     default: false
   },
-  id: Number
 })
 </script>
 <template>

@@ -108,7 +108,11 @@ function onSort(columnKey) {
 let modaId = ref({})
 const isOpenModal = (editData) => {
   isModalVisible.value = !isModalVisible.value
-  modaId.value = editData
+  return modaId.value = editData
+}
+
+const updateTest = (val) => {
+  console.log(val, 'val');
 }
 </script>
 <template>
@@ -145,7 +149,9 @@ const isOpenModal = (editData) => {
     </div>
   </div>
   <BaseModal :openModal="isModalVisible" @clickCloseModal="isOpenModal">
-    <select name="status" id="status">
-      <option value=""></option>
+    <select name="status" id="status" @change="updateTest($event)">
+      <option value="111">aa</option>
+      <option value="aaa">aa</option>
+      <option value="dd">aa</option>
     </select> {{ modaId.status }}{{ modaId.location }}</BaseModal>
 </template>
