@@ -10,8 +10,8 @@ const props = defineProps({
   amount: Number
 })
 
-const onEditData = () => {
-  emit('clickEditData', props.id)
+const onEditData = (editData) => {
+  emit('clickEditData', editData)
 }
 </script>
 <template>
@@ -27,10 +27,9 @@ const onEditData = () => {
       <strong>${{ amount }}</strong>
     </div>
     <div class="td">
-      <button type="button" class="btn-edit" @click="onEditData">
+      <button type="button" class="btn-edit" @click="onEditData({location, status})">
         <img src="@/assets/images/icon-edit.svg" />
       </button>
     </div>
-    <slot></slot>
   </div>
 </template>

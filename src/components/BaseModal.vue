@@ -1,12 +1,12 @@
 <script setup>
-import { ref, defineEmits } from 'vue'
+import { defineEmits } from 'vue'
 const emit = defineEmits(['clickCloseModal'])
 
 const onCloseModal = () => {
   emit('clickCloseModal')
 }
 defineProps({
-  isOpenModal: {
+  openModal: {
     type: Boolean,
     default: false
   },
@@ -14,7 +14,7 @@ defineProps({
 })
 </script>
 <template>
-  <div v-show="isOpenModal">
+  <div v-show="openModal">
     <div class="modal-overlay" @click="onCloseModal"></div>
     <div class="modal">
       <button @click="onCloseModal" class="close-modal" type="button">

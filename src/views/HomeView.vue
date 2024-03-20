@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import BaseTableRow from '@/components/BaseTableRow.vue'
 import BaseModal from '@/components/BaseModal.vue'
 
@@ -87,8 +87,8 @@ let deliveries = ref([
 ])
 
 let sortByValue = ref(false)
-
 let isModalVisible = ref(false)
+
 function onSort(columnKey) {
   sortByValue.value = !sortByValue.value
   if (columnKey === 'location') {
@@ -105,9 +105,10 @@ function onSort(columnKey) {
     }
   }
 }
-
-const isOpenModal = (id) => {
+let modaId = ref({})
+const isOpenModal = (editData) => {
   isModalVisible.value = !isModalVisible.value
+  modaId.value = editData
 }
 </script>
 <template>
@@ -143,5 +144,8 @@ const isOpenModal = (id) => {
       </div>
     </div>
   </div>
-  <BaseModal :isOpenModal="isModalVisible" @clickCloseModal="isOpenModal" />
+  <BaseModal :openModal="isModalVisible" @clickCloseModal="isOpenModal">
+    <select name="status" id="status">
+      <option value=""></option>
+    </select> {{ modaId.status }}{{ modaId.location }}</BaseModal>
 </template>
