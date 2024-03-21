@@ -88,7 +88,7 @@ let deliveries = ref([
 
 let sortByValue = ref(false)
 let isModalVisible = ref(false)
-const selectedStatus = ref('Please select a new status')
+const selectedStatus = ref('')
 
 function onSort(columnKey) {
   sortByValue.value = !sortByValue.value
@@ -115,16 +115,6 @@ const isOpenModal = (editData) => {
 const updateTest = (val) => {
   console.log(val, 'val')
 }
-
-const getStatuses = computed(() => {
-  return deliveries.value.map((item) => item.status)
-})
-
-const getUniqueStatuses = computed(() => {
-  return [...new Set(getStatuses.value)]
-})
-
-console.log(getStatuses, 'getStatuses')
 </script>
 <template>
   <div class="table-wrapper">
@@ -161,11 +151,10 @@ console.log(getStatuses, 'getStatuses')
   </div>
   <BaseModal :openModal="isModalVisible" @clickCloseModal="isOpenModal">
     <div>Вибрано: {{ selectedStatus }}</div>
-    <select v-model="selectedStatus" name="status" id="status" @change="updateStatus($event)">
-      <option disabled value="Please select a new status">Please select a new status</option>
-      <option v-for="(uniqueStatus, index) in getUniqueStatuses" :key="index" :value="uniqueStatus">
-        {{ uniqueStatus }}
-      </option>
+    <select v-model="selectedStatus" name="status" id="status" @change="updateTest($event)">
+      <option disabled value="111">aa</option>
+      <option value="aaa">aadddd</option>
+      <option value="dd">aacccc</option>
     </select>
     {{ modaId.status }}{{ modaId.location }}</BaseModal
   >

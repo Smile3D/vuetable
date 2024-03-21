@@ -124,6 +124,8 @@ const getUniqueStatuses = computed(() => {
   return [...new Set(getStatuses.value)]
 })
 
+console.log(getUniqueStatuses, 'getUniqueStatuses')
+
 console.log(getStatuses, 'getStatuses')
 </script>
 <template>
@@ -161,11 +163,9 @@ console.log(getStatuses, 'getStatuses')
   </div>
   <BaseModal :openModal="isModalVisible" @clickCloseModal="isOpenModal">
     <div>Вибрано: {{ selectedStatus }}</div>
-    <select v-model="selectedStatus" name="status" id="status" @change="updateStatus($event)">
+    <select v-model="selectedStatus" name="status" id="status" @change="updateTest($event)">
       <option disabled value="Please select a new status">Please select a new status</option>
-      <option v-for="(uniqueStatus, index) in getUniqueStatuses" :key="index" :value="uniqueStatus">
-        {{ uniqueStatus }}
-      </option>
+      <option value="">aadddd</option>
     </select>
     {{ modaId.status }}{{ modaId.location }}</BaseModal
   >
