@@ -122,11 +122,8 @@ const getUniqueStatuses = computed(() => {
 })
 
 const updateStatus = (val) => {
-  console.log(val, 'val')
-  if (val !== modaId.value.status) {
-    console.log('true')
-  } else {
-    console.log('false')
+  if (val !== modaId.location) {
+    console.log(modaId.location)
   }
 }
 </script>
@@ -169,10 +166,14 @@ const updateStatus = (val) => {
       v-model="selectedStatus"
       name="status"
       id="status"
-      @change="updateStatus(selectedStatus)"
+      @change="updateStatus(selectedStatus.toLocaleLowerCase())"
     >
       <option disabled value="Please select a new status">Please select a new status</option>
-      <option v-for="(uniqueStatus, index) in getUniqueStatuses" :key="index" :value="uniqueStatus">
+      <option
+        v-for="(uniqueStatus, index) in getUniqueStatuses"
+        :key="index"
+        :value="uniqueStatus.toLocaleLowerCase()"
+      >
         {{ uniqueStatus }}
       </option>
     </select>

@@ -125,6 +125,7 @@ const updateStatus = (val) => {
   console.log(val, 'val')
   if (val !== modaId.value.status) {
     console.log('true')
+    console.log(modaId.value.status, 'modaId.value')
   } else {
     console.log('false')
   }

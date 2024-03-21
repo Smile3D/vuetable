@@ -88,7 +88,6 @@ let deliveries = ref([
 
 let sortByValue = ref(false)
 let isModalVisible = ref(false)
-let modaId = ref({})
 const selectedStatus = ref('Please select a new status')
 
 function onSort(columnKey) {
@@ -107,28 +106,28 @@ function onSort(columnKey) {
     }
   }
 }
-
+let modaId = ref({})
 const isOpenModal = (editData) => {
   isModalVisible.value = !isModalVisible.value
   return (modaId.value = editData)
 }
 
+const updateTest = (val) => {
+  console.log(val, 'val')
+}
+
 const getStatuses = computed(() => {
-  return deliveries.value.map((item) => item.status)
+  return (deliveries.value = Array.from(deliveries.value, ({ status }) => status))
+  //   deliveries.value.map((item) => item.status)
 })
+
+console.log(getStatuses, 'getStatuses')
 
 const getUniqueStatuses = computed(() => {
   return [...new Set(getStatuses.value)]
 })
 
-const updateStatus = (val) => {
-  console.log(val, 'val')
-  if (val !== modaId.value.status) {
-    console.log('true')
-  } else {
-    console.log('false')
-  }
-}
+console.log(getStatuses, 'getStatuses')
 </script>
 <template>
   <div class="table-wrapper">
@@ -165,12 +164,7 @@ const updateStatus = (val) => {
   </div>
   <BaseModal :openModal="isModalVisible" @clickCloseModal="isOpenModal">
     <div>Вибрано: {{ selectedStatus }}</div>
-    <select
-      v-model="selectedStatus"
-      name="status"
-      id="status"
-      @change="updateStatus(selectedStatus)"
-    >
+    <select v-model="selectedStatus" name="status" id="status" @change="updateStatus($event)">
       <option disabled value="Please select a new status">Please select a new status</option>
       <option v-for="(uniqueStatus, index) in getUniqueStatuses" :key="index" :value="uniqueStatus">
         {{ uniqueStatus }}

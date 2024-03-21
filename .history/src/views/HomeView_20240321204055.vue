@@ -88,7 +88,6 @@ let deliveries = ref([
 
 let sortByValue = ref(false)
 let isModalVisible = ref(false)
-let modaId = ref({})
 const selectedStatus = ref('Please select a new status')
 
 function onSort(columnKey) {
@@ -107,10 +106,14 @@ function onSort(columnKey) {
     }
   }
 }
-
+let modaId = ref({})
 const isOpenModal = (editData) => {
   isModalVisible.value = !isModalVisible.value
   return (modaId.value = editData)
+}
+
+const updateStatus = (val) => {
+  console.log(val, 'val')
 }
 
 const getStatuses = computed(() => {
@@ -120,15 +123,6 @@ const getStatuses = computed(() => {
 const getUniqueStatuses = computed(() => {
   return [...new Set(getStatuses.value)]
 })
-
-const updateStatus = (val) => {
-  console.log(val, 'val')
-  if (val !== modaId.value.status) {
-    console.log('true')
-  } else {
-    console.log('false')
-  }
-}
 </script>
 <template>
   <div class="table-wrapper">

@@ -123,8 +123,9 @@ const getUniqueStatuses = computed(() => {
 
 const updateStatus = (val) => {
   console.log(val, 'val')
-  if (val !== modaId.value.status) {
+  if (val !== modaId.value) {
     console.log('true')
+    console.log(modaId.value, 'modaId.value')
   } else {
     console.log('false')
   }
