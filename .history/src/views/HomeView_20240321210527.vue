@@ -113,15 +113,6 @@ const isOpenModal = (editData) => {
   return (modaId.value = editData)
 }
 
-const updateStatus = (val) => {
-  console.log(val, 'val')
-  if (val !== modaId.value.status) {
-    deliveries.value.push()
-  } else {
-    console.log('false')
-  }
-}
-
 const getStatuses = computed(() => {
   return deliveries.value.map((item) => item.status)
 })
@@ -129,6 +120,15 @@ const getStatuses = computed(() => {
 const getUniqueStatuses = computed(() => {
   return [...new Set(getStatuses.value)]
 })
+
+const updateStatus = (val) => {
+  console.log(val, 'val')
+  if (val !== modaId.value.status) {
+    console.log('sss')
+  } else {
+    console.log('false')
+  }
+}
 </script>
 <template>
   <div class="table-wrapper">
